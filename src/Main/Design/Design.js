@@ -2,7 +2,7 @@ import React from 'react';
 
 const Designs = () => {
 	return(
-		<div>YOu Suck</div>
+		<div>Design</div>
 		);
 };
 
