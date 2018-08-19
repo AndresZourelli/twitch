@@ -1,4 +1,6 @@
 .CardStyles {
 	margin-top: 5%;
-
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 100px;
 }
