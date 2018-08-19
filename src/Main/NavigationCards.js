@@ -9,7 +9,6 @@ import { Container, Row, Col } from 'reactstrap';
 
 const Cards = ({OnRouteChange}) => {
   return (
-
     <Container>
       <Row>
         <Col>
@@ -63,7 +62,6 @@ const Cards = ({OnRouteChange}) => {
           </div>
         </Col>  
       </Row>
-    
     </Container>
   );
 };
