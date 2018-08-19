@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import Header from './Main/Header';
-import Cards from './Main/NavigationCards';
-import Alerts from './Main/Alerts/Alerts';
-import Designs from './Main/Design/Design';
-import Equip from './Main/Equip/Equip';
-import OBS from './Main/OBS/OBS';
+import './App.css';
+import Header from './Main/Header/Header';
+import CardNav from './Main/CardNav/CardNav';
+import TabNav from './Main/TabNav/TabNav';
 
 class App extends Component {
   constructor() {
@@ -21,32 +19,17 @@ class App extends Component {
   }
 
   RouteSwitch(param) {
-    switch(this.state.route) {
-
-      case 'Alerts':
-          return <Alerts></Alerts>
-          
-      case 'Design':
-          return <Designs></Designs>
-          
-      case 'Equip':
-          return <Equip></Equip>
-          
-      case 'OBS':
-          return <OBS></OBS>
-          
-
-      default: 
-          return <Cards  OnRouteChange={this.OnRouteChange} ></Cards>
-        
+    if(param === 'Alerts' || param === 'OBS' || param ==='Equip' || param==='Design'){
+        return <TabNav route={this.state.route} OnRouteChange={this.OnRouteChange}></TabNav>
+      }
+    else 
+        return <CardNav  route={this.state.route} OnRouteChange={this.OnRouteChange} ></CardNav>
   }
-}
 
   render() {
     return (
-      <div>
+      <div className='MainStyle'>
         <Header></Header>
-        
         {this.RouteSwitch(this.state.route)}
       </div>
     );

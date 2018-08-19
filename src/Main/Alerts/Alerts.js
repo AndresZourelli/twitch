@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Alerts = () => {
-	return(
-		<div>YOu Suck</div>
-		);
+  return(
+    <div>Alerts</div>
+    );
 };
 
 export default Alerts;
