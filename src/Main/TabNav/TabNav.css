@@ -19,12 +19,17 @@
 
 
 .nav-link.active {
-	background-color: white;
+	background-color: #F6F4FA !important;
 	color: black !important;
-	border-bottom: white  !important;
+	border-bottom: #F6F4FA  !important;
 }
 
 .nav-link {
 	border: 0 !important;
 	cursor: pointer !important;
+}
+
+.pageContent {
+	align-content: stretch;
+	padding: 0 0 0 0 !important;
 }

@@ -1,23 +1,38 @@
 .obs_contain {
-	margin-right: 0px !important;
+	margin: 0, 0, 0, 0 !important;
+	padding: 0, 0, 0, 0 !important;
 	width: 100% !important;
 	text-align: left;
 	background-color: white;
 	/*box-shadow: 5px 5px 2px 5px;*/
 	margin-top: 0;
+	margin-bottom: 0;
 
 }
 
 .Title_OBS {
-	padding-top: 2%;
+	margin-left: 0;
+	padding-top: 3%;
 	padding-bottom: 2%;
+	font-weight: 700 !important;
+}
+
+.h4 {
+	font-weight: 700 !important;
 }
 
 .right {
 	padding-top: 2%;
+	padding-left: 2%;
 	border-left: 2px solid #6441A4;
-	background: #F6F4FA;
+	background: white;
 	display: flex;
 	position: static;
 	float: right !important;
+	height: 100vh;
+	max-width: 40%;
+}
+
+.left {
+	padding-left: 4%;
 }

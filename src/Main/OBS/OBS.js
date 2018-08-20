@@ -3,11 +3,11 @@ import { Container, Row, Col } from 'reactstrap';
 import './OBS.css';
 const OBS = () => {
 	return(
-		<Container className="obs_contain">
-			<Row >
+		<div>
+			<Row className="stretch">
 				<Col className = "left" sm = "8">
-					<h3 className="Title_OBS">Getting Started with OBS</h3>
-					<p>You can get OBS <a href="https://obsproject.com/">here.</a></p>
+					<h2 className="Title_OBS">Getting Started with OBS</h2>
+					<p>You can get OBS <a href="https://obsproject.com/" target="_blank">here.</a></p>
 					<div className = "OBS_Why">
 						<h4>Why use OBS?</h4>
 						<p></p>
@@ -17,7 +17,7 @@ const OBS = () => {
 				His
 				</Col>
 			</Row>
-		</Container>
+		</div>
 		);
 };
 

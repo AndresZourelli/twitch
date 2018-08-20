@@ -1,7 +1,20 @@
+
+
 .CardStyles {
 	margin-top: 5%;
 	margin-left: auto;
 	margin-right: auto;
-	min-width: 100px;
 	cursor: pointer;
+	align-content: center;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.dimensionSet {
+	height: 95%;
+	width: 95%;
+}
+
+.bottom {
+	margin-bottom: 5vh;
 }

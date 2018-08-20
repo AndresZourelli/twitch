@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './Main/Header/Header';
+import Footer from './Main/Footer/Footer';
 import CardNav from './Main/CardNav/CardNav';
 import TabNav from './Main/TabNav/TabNav';
 
@@ -31,6 +32,7 @@ class App extends Component {
       <div className='MainStyle'>
         <Header></Header>
         {this.RouteSwitch(this.state.route)}
+        <Footer></Footer>
       </div>
     );
   }

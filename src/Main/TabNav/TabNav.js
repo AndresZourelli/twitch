@@ -29,7 +29,7 @@ const TabNav = ({route, OnRouteChange}) => {
               <NavLink className = {classnames({ active: route === 'Design' }, 'NavTabs')} onClick={() => { OnRouteChange('Design') }}>Design</NavLink>
             </NavItem>
           </Nav>
-          <TabContent activeTab={route} >
+          <TabContent className="pageContent" activeTab={route} >
               <TabPane tabId="Alerts">
                 <Alerts></Alerts>
               </TabPane>
