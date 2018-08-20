@@ -5,28 +5,31 @@ import Alerts from '../Alerts/Alerts';
 import Designs from '../Design/Design';
 import Equip from '../Equip/Equip';
 import OBS from '../OBS/OBS';
+import classnames from 'classnames';
+
 
 const TabNav = ({route, OnRouteChange}) => {
+
   return(
   	<div>
-    <Nav tabs>
+    <Nav tabs className = 'TabContainer'>
     		<NavItem>
-              <NavLink onClick={() => { OnRouteChange('Home') }}>Back</NavLink>
+              <NavLink  className = 'NavTabs ' onClick={() => { OnRouteChange('Home') }}>Back</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={() => { OnRouteChange('Alerts') }}>Alerts</NavLink>
+              <NavLink  className = {classnames({ active: route === 'Alerts' }, 'NavTabs')} onClick={() => { OnRouteChange('Alerts') }}>Alerts</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={() => { OnRouteChange('OBS') }}>OBS</NavLink>
+              <NavLink className = {classnames({ active: route === 'OBS' }, 'NavTabs')} onClick={() => { OnRouteChange('OBS') }}>OBS</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={() => { OnRouteChange('Equip') }}>Equip</NavLink>
+              <NavLink className = {classnames({ active: route === 'Equip' }, 'NavTabs')} onClick={() => { OnRouteChange('Equip') }}>Equip</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink onClick={() => { OnRouteChange('Design') }}>Design</NavLink>
+              <NavLink className = {classnames({ active: route === 'Design' }, 'NavTabs')} onClick={() => { OnRouteChange('Design') }}>Design</NavLink>
             </NavItem>
           </Nav>
-          <TabContent activeTab={route}>
+          <TabContent activeTab={route} >
               <TabPane tabId="Alerts">
                 <Alerts></Alerts>
               </TabPane>

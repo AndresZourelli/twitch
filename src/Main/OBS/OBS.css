@@ -1,0 +1,23 @@
+.obs_contain {
+	margin-right: 0px !important;
+	width: 100% !important;
+	text-align: left;
+	background-color: white;
+	/*box-shadow: 5px 5px 2px 5px;*/
+	margin-top: 0;
+
+}
+
+.Title_OBS {
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.right {
+	padding-top: 2%;
+	border-left: 2px solid #6441A4;
+	background: #F6F4FA;
+	display: flex;
+	position: static;
+	float: right !important;
+}

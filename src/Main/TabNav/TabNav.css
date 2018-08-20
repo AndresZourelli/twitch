@@ -1,0 +1,30 @@
+.TabContainer {
+	
+}
+
+.NavTabs {
+	cursor: pointer;
+	border: 0;
+}
+.nav-tabs {
+	background-color: #6441A4  !important;
+	border: 0;
+	color: white !important;
+}
+
+.NavTabs:hover {
+	background-color: #A990D7;
+	color: white;
+}
+
+
+.nav-link.active {
+	background-color: white;
+	color: black !important;
+	border-bottom: white  !important;
+}
+
+.nav-link {
+	border: 0 !important;
+	cursor: pointer !important;
+}
