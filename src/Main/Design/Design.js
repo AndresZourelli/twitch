@@ -1,9 +1,12 @@
 import React from 'react';
-
+import {
+  withRouter
+} from 'react-router-dom';
 const Designs = () => {
 	return(
-		<div>Design hi</div>
+		<div>Design hi {console.log("fatty")}</div>
+
 		);
 };
 
-export default Designs;
+export default withRouter(Designs);

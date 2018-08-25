@@ -1,9 +1,10 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import './OBS.css';
 const OBS = () => {
 	return(
 		<div>
+		
 			<Row className="stretch">
 				<Col className = "left" sm = "8">
 					<h2 className="Title_OBS">Getting Started with OBS</h2>

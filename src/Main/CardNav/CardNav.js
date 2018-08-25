@@ -6,9 +6,14 @@ import { Card, CardImg, CardText, CardBody,
 import './CardNav.css';
 import { Container, Row, Col } from 'reactstrap';
 
+import {
+  withRouter, Link
+} from 'react-router-dom';
+
 
 const CardNav = ({route, OnRouteChange}) => {
   return (
+
     <Container className='cont zeroMargins'>
     	<Row className='center'>
         <Col className='zeroMargins boxlayout' xs='12' sm='6' md='4'>
@@ -56,8 +61,9 @@ const CardNav = ({route, OnRouteChange}) => {
           </div>
         </Col>  
         </Row>
+    }
     </Container>
   );
 };
 
-export default CardNav;
+export default withRouter(CardNav);
