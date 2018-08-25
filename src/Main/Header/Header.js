@@ -67,22 +67,22 @@ class Header extends Component {
 
     const slides = items.map((item) => {
       return (
+
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={item.src}
         >
+          <div className='alignRight'>
           <img src={item.src} alt={item.altText} />
-          {<Container className="overlay_col">
+          <Container className="overlay_col">
           <Row>
-            <Col  sm = "8">
+            <Col>
             hi
             </Col>
-            <Col  sm="4">
-              Hello
-            </Col>
           </Row>
-        </Container>}
+          </Container>
+          </div>
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
@@ -99,22 +99,9 @@ class Header extends Component {
 
         {slides}
         
-        
-          
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-        {<Container className="overlay_col">
-          <Row>
-            <Col  sm = "8">
-            hi
-            </Col>
-            <Col  sm="4">
-              Hello
-            </Col>
-          </Row>
-        </Container>}
         
-
       </Carousel>
     );
   }
