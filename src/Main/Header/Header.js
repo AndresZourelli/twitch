@@ -16,8 +16,8 @@ const items = [
 {
     src: `slide1`,
     title: "Explore the World of Streaming",
+    csstitle: "title1",
     subtitle:"Guides, Tips, Publicity, and Collaborators",
-    moreinfo: "",
     description: "ajdfbngv akfdjvngkfjbv djhvhbkjf jfkdhfrbv fkdjfghkjr vfjudkfhvurn ujfbe fjer ejfnjfkgr. rjdfnhifngjf jfjvfjuv jndfjknvkjfnv.",
     alt:"blue controller",
     color:"overlay_colcolor1"
@@ -25,8 +25,8 @@ const items = [
   {
     src:  `slide2`,
     title: "Featured Stream",
+    csstitle: "title1",
     subtitle:"A Person",
-    moreinfo: "Instagram @APerson",
     description: "ajdfbngv akfdjvngkfjbv djhvhbkjf jfkdhfrbv fkdjfghkjr vfjudkfhvurn ujfbe fjer ejfnjfkgr. rjdfnhifngjf jfjvfjuv jndfjknvkjfnv.",
     alt:"blue controller",
     color:"overlay_colcolor2"
@@ -34,9 +34,9 @@ const items = [
   {
     src: `slide3`,
     title: "The Streamer Society",
+    csstitle: "title1",
     subtitle:"A community of streamers collaborating and sharing viewers and advice",
-    description: "ajdfbngv akfdjvngkfjbv djhvhbkjf jfkdhfrbv fkdjfghkjr vfjudkfhvurn ujfbe fjer ejfnjfkgr. rjdfnhifngjf jfjvfjuv jndfjknvkjfnv.",
-    moreinfo: "Click to join and maybe become the next featured stream",
+    description: "Join The Streamer Society to become a Featured Streamer by filling out a Get a Feature Form under the Streamer Society page, get in contact with similar streamers on our collaborator chat space, and exchange Tips and Tricks.",
     alt:"blue controller",
     color:"overlay_colcolor3"
   }
@@ -92,10 +92,13 @@ class Header extends Component {
         <Row>
             <Col xs="9"  className = "zeroMargin">
               <div className={item.src} alt={item.altText}>
-              <h1 className="title">{item.title}</h1>
               </div>
             </Col>
-            <Col className={item.color} xs="3" >
+            <span className='title'>
+            <h1 className={item.csstitle}>{item.title}</h1>
+            <h2 className={item.csstitle}>{item.subtitle}</h2>
+            </span>
+            <Col className="overlay_col" xs="3" >
             <span className="alignVertical">{item.description}</span>
             </Col>
         </Row>

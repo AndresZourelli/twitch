@@ -5,47 +5,57 @@ img {
 }
 
 .title {
-    font-size: 3em;
-    font-weight: 900;
     text-align: center;
-    opacity: 1;
-    color: white;
-    padding-top: 6%;
+    align-self: center;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    font-family: garineldono01regular;
 }
 
-.overlay_colcolor1 {
-    height: 40vh; /* Full height (cover the whole page) */
-    top: 0; 
+h1 {
+    font-weight: 900;
     padding: 0;
-    padding: 1% !important;
-    border-left: 2px solid #6441A4;
-    display: flex;
-    background: #f8e0ff;
     margin: 0;
+    font-size: 6em;
 }
-.overlay_colcolor2 {
-    height: 40vh; /* Full height (cover the whole page) */
-    top: 0; 
+
+h2 {
+    font-weight: 900;
     padding: 0;
-    padding: 1% !important;
-    border-left: 2px solid #6441A4;
-    display: flex;
     margin: 0;
-    background: #e0fcff;
+    font-size: 2em;
 }
-.overlay_colcolor3 {
+
+.title1 {
+    background: -webkit-linear-gradient(right, #310b4f, black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title2 {
+
+}
+
+.title3 {
+
+}
+
+.overlay_col {
     height: 40vh; /* Full height (cover the whole page) */
     top: 0; 
-    padding: 0;
-    padding: 1% !important;
-    border-left: 2px solid #6441A4;
     display: flex;
     margin: 0;
     background: #e4e0ff;
 }
 
 .alignVertical {
-    font-size: 1.75em;
+    border: .3em groove #6441A4;
+    margin: 10%;
+    padding: 5%;
+    font-family: garineldono01regular;
+    font-size: 1.25em;
+    line-height: 1.2em;
     text-align: center;
     display:flex;
     align-items: center; /* Vertical center alignment */
@@ -66,8 +76,8 @@ img {
     background-repeat: no-repeat;
     background-position: 0;
     background-image: url("blue-controller.jpg");
-    -webkit-filter: hue-rotate(90deg);
-    filter: hue-rotate(90deg);
+    -webkit-filter: hue-rotate(65deg);
+    filter: hue-rotate(65deg);
 }
 .slide2 {
     width: 100%;
@@ -87,7 +97,8 @@ img {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0;
-    background-image: url("city.jpg");
+    background-image: linear-gradient(left, transparent, #e4e0ff),
+        url("city.jpg");
 }
 
 .zeroMargin {
