@@ -9,9 +9,9 @@ import { Container, Row, Col } from 'reactstrap';
 
 const CardNav = ({route, OnRouteChange}) => {
   return (
-    <Container className='zeroMargins'>
+    <Container className='cont zeroMargins'>
     	<Row className='center'>
-        <Col className='zeroMargins' xs='12' sm='6' md='4'>
+        <Col className='zeroMargins boxlayout' xs='12' sm='6' md='4'>
           <div className = 'CardStyles'>
           <Card className='dimensionSet' onClick={() => OnRouteChange('OBS')} >
             <CardImg className='borderSquare' src="https://obsproject.com/assets/images/OBSDemoApp.jpg" alt="Card image cap" />
@@ -22,7 +22,7 @@ const CardNav = ({route, OnRouteChange}) => {
           </Card>
           </div>
         </Col>
-        <Col className='zeroMargins' xs='12' sm='6' md='4'>
+        <Col className='zeroMargins boxlayout' xs='12' sm='6' md='4'>
           <div className = 'CardStyles'>
           <Card className='dimensionSet' onClick={() => OnRouteChange('Equip')} >
             <CardImg className='borderSquare' src="https://www.muycomputer.com/wp-content/uploads/2017/11/PC-para-gaming-1000x576.jpg" alt="Card image cap" />
@@ -33,7 +33,7 @@ const CardNav = ({route, OnRouteChange}) => {
           </Card>
           </div>
         </Col>  
-        <Col className='zeroMargins' xs='12' sm='6' md='4'>
+        <Col className='zeroMargins boxlayout' xs='12' sm='6' md='4'>
           <div className = 'CardStyles'>
           <Card className='dimensionSet' onClick={() => OnRouteChange('Alerts')} >
             <CardImg className='borderSquare zeroMargins' src="https://i1.wp.com/streamplaygraphics.com/wp-content/uploads/edd/2018/01/twitch-alert.png" alt="Card image cap" />
@@ -44,15 +44,12 @@ const CardNav = ({route, OnRouteChange}) => {
           </Card>
           </div>
         </Col>
-        <Col className='zeroMargins' xs='12' sm='6' md='4'>
+        <Col className='zeroMargins boxlayout' xs='12' sm='6' md='4'>
           <div className = 'CardStyles'>
-<<<<<<< HEAD
-          <Card className='dimensionSet' onClick={() => OnRouteChange('Design')} >
-            <CardImg className='borderSquare' src="https://cdn.shopify.com/s/files/1/1353/2527/products/stream-panels-overwatch-twitch-panels-1_1024x1024.jpg?v=1527255034" alt="Card image cap" />
-=======
+
           <Card className='dimensionSet' onClick={() => OnRouteChange('Designs')} >
-            <CardImg src="https://cdn.shopify.com/s/files/1/1353/2527/products/stream-panels-overwatch-twitch-panels-1_1024x1024.jpg?v=1527255034" alt="Card image cap" />
->>>>>>> 794e25139e62695d2825a75a2d3f46cd3adee5fa
+            <CardImg className='borderSquare' src="https://cdn.shopify.com/s/files/1/1353/2527/products/stream-panels-overwatch-twitch-panels-1_1024x1024.jpg?v=1527255034" alt="Card image cap" />
+
             <CardBody>
               <CardTitle>Branding</CardTitle>
               <CardSubtitle>What's your style? Designing the assets required to attract viewers.</CardSubtitle>

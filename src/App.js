@@ -17,13 +17,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-<<<<<<< HEAD
+
       route: 'Home',
     }
-=======
-      route: '',
-    };
->>>>>>> 794e25139e62695d2825a75a2d3f46cd3adee5fa
+
+
   }
 
   OnRouteChange = (route) => {
@@ -36,16 +34,14 @@ class App extends Component {
 
   RouteSwitch(param) {
     if(param === 'Alerts' || param === 'OBS' || param ==='Equip' || param==='Designs' ){
-        return( <div>
-                <TabNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
+        return( <TabNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
                 
-                </div>
+                
           );}
     else  
-        return (<div>
-                <CardNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
+        return ( <CardNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
                 
-                </div>
+                
 
           ); 
   }
@@ -59,11 +55,11 @@ class App extends Component {
         <Header></Header>
         <div className='center'>
         {this.RouteSwitch(this.state.route)}
-<<<<<<< HEAD
+
         </div>
-=======
+
         <Redirect to={"/"+this.state.route} />
->>>>>>> 794e25139e62695d2825a75a2d3f46cd3adee5fa
+
         <Footer></Footer>
          {console.log(this.state.route)}
         <Switch>
