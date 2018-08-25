@@ -26,17 +26,17 @@ class Home extends Component {
   }
 
   RouteSwitch(param) {
-    if(param === '/Alerts' || param === '/OBS' || param ==='/Equip' || param==='/Designs' ){
+    if(param === '/Alerts' || param === '/OBS' || param ==='/Equip' || param==='/Designs' || param==='/Tips' || param==='/Streamer' ){
         return( <div className="newwidth"> 
                 <TabNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
       
-              <Redirect push to={this.state.route}/>
+                  <Redirect to={this.state.route}/>
                 </div>
               );}
     else
         return (<div><CardNav route={this.state.route} OnRouteChange={this.OnRouteChange}  />
 
-               <Redirect push to="/Home"/>
+                  <Redirect to="/Home"/>
                 </div>
                 ); 
   }

@@ -6,6 +6,8 @@ import Alerts from './Main/Alerts/Alerts';
 import Designs from './Main/Design/Design';
 import Equip from './Main/Equip/Equip';
 import OBS from './Main/OBS/OBS';
+import Tips from './Main/Tips/Tips';
+import Streamer from './Main/Streamer/Streamer';
 import Home from './Home';
 import {
   BrowserRouter as Router,
@@ -29,6 +31,9 @@ class App extends Component {
           <Route    path="/OBS" component={OBS}/>
           <Route   path="/Designs" component={Designs}/>
           <Route   path="/Equip" component={Equip}/>
+          <Route   path="/Streamer" component={Streamer}/>
+          <Route   path="/Tips" component={Tips}/>
+          <Route path ="/Home"/>
         </Switch>
         <Footer></Footer>
       </div>

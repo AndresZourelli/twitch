@@ -24,6 +24,12 @@ const TabNav = ({route, OnRouteChange}) => {
             <NavItem>
               <NavLink className = {classnames({ active: route === '/Designs' }, 'NavTabs')} onClick={() => { OnRouteChange('/Designs') }}>Design</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink className = {classnames({ active: route === '/Streamer' }, 'NavTabs')} onClick={() => { OnRouteChange('/Streamer') }}>Streamer</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink className = {classnames({ active: route === '/Tips' }, 'NavTabs')} onClick={() => { OnRouteChange('/Tips') }}>Tips</NavLink>
+            </NavItem>
           </Nav>
           <TabContent className="pageContent" activeTab={route} >
               <TabPane tabId="Alerts">
@@ -33,6 +39,10 @@ const TabNav = ({route, OnRouteChange}) => {
               <TabPane tabId="Designs">
               </TabPane>
               <TabPane tabId="Equip">
+              </TabPane>
+              <TabPane tabId="Streamer">
+              </TabPane>
+              <TabPane tabId="Tips">
               </TabPane>
           </TabContent>
         </div>
