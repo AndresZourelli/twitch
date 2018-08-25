@@ -6,6 +6,13 @@ import Designs from '../Design/Design';
 import Equip from '../Equip/Equip';
 import OBS from '../OBS/OBS';
 import classnames from 'classnames';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 
 
 const TabNav = ({route, OnRouteChange}) => {
@@ -26,21 +33,23 @@ const TabNav = ({route, OnRouteChange}) => {
               <NavLink className = {classnames({ active: route === 'Equip' }, 'NavTabs')} onClick={() => { OnRouteChange('Equip') }}>Equip</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className = {classnames({ active: route === 'Design' }, 'NavTabs')} onClick={() => { OnRouteChange('Design') }}>Design</NavLink>
+              <NavLink className = {classnames({ active: route === 'Designs' }, 'NavTabs')} onClick={() => { OnRouteChange('Designs') }}>Design</NavLink>
             </NavItem>
           </Nav>
           <TabContent className="pageContent" activeTab={route} >
               <TabPane tabId="Alerts">
-                <Alerts></Alerts>
+                
+                <Route exact  path="/Alerts" component={Alerts}/>
               </TabPane>
               <TabPane tabId="OBS">
-                <OBS></OBS>
+                <Route  exact  path="/OBS" component={OBS}/>
+                
               </TabPane>
-              <TabPane tabId="Design">
-                <Designs></Designs>
+              <TabPane tabId="Designs">
+                <Route  exact path="/Designs" component={Designs}/>
               </TabPane>
               <TabPane tabId="Equip">
-                <Equip></Equip>
+                <Route  exact path="/Equip" component={Equip}/>
               </TabPane>
           </TabContent>
         </div>
