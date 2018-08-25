@@ -48,7 +48,7 @@ const CardNav = ({route, OnRouteChange}) => {
         </Col>
         <Col>
           <div className = 'CardStyles'>
-          <Card className='dimensionSet' onClick={() => OnRouteChange('Design')} >
+          <Card className='dimensionSet' onClick={() => OnRouteChange('Designs')} >
             <CardImg src="https://cdn.shopify.com/s/files/1/1353/2527/products/stream-panels-overwatch-twitch-panels-1_1024x1024.jpg?v=1527255034" alt="Card image cap" />
             <CardBody>
               <CardTitle>Branding</CardTitle>
