@@ -17,8 +17,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: '',
-    };
+      route: 'Home',
+    }
   }
 
   OnRouteChange = (route) => {
@@ -33,14 +33,12 @@ class App extends Component {
     if(param === 'Alerts' || param === 'OBS' || param ==='Equip' || param==='Designs' ){
         return( <div class="newwidth">
                 <TabNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
-                
                 </div>
           );}
     else  
-        return (<div>
-                <CardNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
+        return ( <CardNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
                 
-                </div>
+                
 
           ); 
   }

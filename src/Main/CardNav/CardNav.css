@@ -1,3 +1,28 @@
+.col {
+	margin: 1px !important;
+}
+.cont {
+	min-width: 100%;
+}
+.zeroMargins {
+	padding-left: 2px ;
+	padding-right: 2px ;
+	width: 100%;
+
+	
+}
+.center {
+	align-items: center;
+	align-content: center;
+	float: center;
+	padding-right: 0;
+	padding-left: 0;
+	width: 100% !important;
+	min-width: 100%;
+
+}
+
+
 .CardStyles {
 	margin-top: 5%;
 	cursor: pointer;
@@ -6,22 +31,9 @@
 	height: 100% !important;
 }
 
-.zeroMargins {
-	margin-left: 1px !important;
-	margin-right: 1px !important;
-	padding-left: 0 !important;
-	padding-right: 0 !important;
-	width: 100%;
-}
 
-.center {
-	align-items: center;
-	align-content: center;
-	float: center;
-	padding-right: 0;
-	padding-left: 0;
-	width: 100% !important;
-}
+
+
 
 .dimensionSet {
 	height: 100%;
@@ -30,10 +42,14 @@
 	border-radius: 0 !important;
 	padding-right: 0 !important;
 	padding-left: 0 !important;
-	margin-right: 0 !important;
-	margin-left: 0 !important;
+	/*margin-right: 0 !important;
+	margin-left: 0 !important;*/
 }
 
 .borderSquare {
 	border-radius: 0;
+}
+
+.boxlayout {
+	
 }
