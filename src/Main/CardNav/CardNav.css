@@ -1,20 +1,39 @@
-
-
 .CardStyles {
 	margin-top: 5%;
-	margin-left: auto;
-	margin-right: auto;
 	cursor: pointer;
-	align-content: center;
+	align-items: center;
 	width: 100% !important;
 	height: 100% !important;
 }
 
-.dimensionSet {
-	height: 95%;
-	width: 95%;
+.zeroMargins {
+	margin-left: 1px !important;
+	margin-right: 1px !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	width: 100%;
 }
 
-.bottom {
-	margin-bottom: 5vh;
+.center {
+	align-items: center;
+	align-content: center;
+	float: center;
+	padding-right: 0;
+	padding-left: 0;
+	width: 100% !important;
+}
+
+.dimensionSet {
+	height: 100%;
+	width: 100%;
+	border-width: 0 !important;
+	border-radius: 0 !important;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+}
+
+.borderSquare {
+	border-radius: 0;
 }

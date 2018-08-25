@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      route: 'OBS',
+      route: 'Home',
     }
   }
 
@@ -31,7 +31,9 @@ class App extends Component {
     return (
       <div className='MainStyle'>
         <Header></Header>
+        <div className='center'>
         {this.RouteSwitch(this.state.route)}
+        </div>
         <Footer></Footer>
       </div>
     );

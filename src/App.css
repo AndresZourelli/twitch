@@ -1,9 +1,19 @@
 .center {
-  display: flex;
-  justify-content: center;
-  position: relative;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	margin-right: 0 !important;
+	margin-left: 0 !important;
 }
 
 .MainStyle {
 	background: #F6F4FA;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	margin-right: 0 !important;
+	margin-left: 0 !important;
+	width: 100%;
 }
