@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import streamerBlue from './streamerBlue.png';
 import streamerPurple from './streamerPurple.png';
 import streamerOrange from './streamerOrange.png';
 import { Container, Row, Col } from 'reactstrap';
@@ -14,15 +13,32 @@ import './Header.css';
 
 
 const items = [
-  {
-    src:  `${streamerBlue}`,
-    caption: "Streamer Human" 
+{
+    src: `slide1`,
+    title: "Explore the World of Streaming",
+    subtitle:"Guides, Tips, Publicity, and Collaborators",
+    moreinfo: "",
+    description: "ajdfbngv akfdjvngkfjbv djhvhbkjf jfkdhfrbv fkdjfghkjr vfjudkfhvurn ujfbe fjer ejfnjfkgr. rjdfnhifngjf jfjvfjuv jndfjknvkjfnv.",
+    alt:"blue controller",
+    color:"overlay_colcolor1"
   },
   {
-    src: `${streamerPurple}`
+    src:  `slide2`,
+    title: "Featured Stream",
+    subtitle:"A Person",
+    moreinfo: "Instagram @APerson",
+    description: "ajdfbngv akfdjvngkfjbv djhvhbkjf jfkdhfrbv fkdjfghkjr vfjudkfhvurn ujfbe fjer ejfnjfkgr. rjdfnhifngjf jfjvfjuv jndfjknvkjfnv.",
+    alt:"blue controller",
+    color:"overlay_colcolor2"
   },
   {
-    src: `${streamerOrange}`
+    src: `slide3`,
+    title: "The Streamer Society",
+    subtitle:"A community of streamers collaborating and sharing viewers and advice",
+    description: "ajdfbngv akfdjvngkfjbv djhvhbkjf jfkdhfrbv fkdjfghkjr vfjudkfhvurn ujfbe fjer ejfnjfkgr. rjdfnhifngjf jfjvfjuv jndfjknvkjfnv.",
+    moreinfo: "Click to join and maybe become the next featured stream",
+    alt:"blue controller",
+    color:"overlay_colcolor3"
   }
 ];
 
@@ -73,17 +89,17 @@ class Header extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <div className='alignRight'>
-          <img src={item.src} alt={item.altText} />
-          <Container className="overlay_col">
-          <Row>
-            <Col>
-            hi
+        <Row>
+            <Col xs="9"  className = "zeroMargin">
+              <div className={item.src} alt={item.altText}>
+              <h1 className="title">{item.title}</h1>
+              </div>
             </Col>
-          </Row>
-          </Container>
-          </div>
-          <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+            <Col className={item.color} xs="3" >
+            <span className="alignVertical">{item.description}</span>
+            </Col>
+        </Row>
+        
         </CarouselItem>
       );
     });
@@ -95,7 +111,7 @@ class Header extends Component {
         previous={this.previous}
       >
        
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        <CarouselIndicators className='padded' items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
 
         {slides}
         
