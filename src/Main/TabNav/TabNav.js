@@ -10,19 +10,19 @@ const TabNav = ({route, OnRouteChange}) => {
   	<div>
     <Nav tabs className = 'TabContainer'>
     		<NavItem>
-              <NavLink  className = 'NavTabs ' onClick={() => { OnRouteChange('Home') }}>Back</NavLink>
+              <NavLink  className = 'NavTabs ' onClick={() => { OnRouteChange('/Home') }}>Back</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink  className = {classnames({ active: route === 'Alerts' }, 'NavTabs')} onClick={() => { OnRouteChange('Alerts') }}>Alerts</NavLink>
+              <NavLink  className = {classnames({ active: route === '/Alerts' }, 'NavTabs')} onClick={() => { OnRouteChange('/Alerts') }}>Alerts</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className = {classnames({ active: route === 'OBS' }, 'NavTabs')} onClick={() => { OnRouteChange('OBS') }}>OBS</NavLink>
+              <NavLink className = {classnames({ active: route === '/OBS' }, 'NavTabs')} onClick={() => { OnRouteChange('/OBS') }}>OBS</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className = {classnames({ active: route === 'Equip' }, 'NavTabs')} onClick={() => { OnRouteChange('Equip') }}>Equip</NavLink>
+              <NavLink className = {classnames({ active: route === '/Equip' }, 'NavTabs')} onClick={() => { OnRouteChange('/Equip') }}>Equip</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className = {classnames({ active: route === 'Designs' }, 'NavTabs')} onClick={() => { OnRouteChange('Designs') }}>Design</NavLink>
+              <NavLink className = {classnames({ active: route === '/Designs' }, 'NavTabs')} onClick={() => { OnRouteChange('/Designs') }}>Design</NavLink>
             </NavItem>
           </Nav>
           <TabContent className="pageContent" activeTab={route} >

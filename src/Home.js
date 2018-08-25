@@ -16,6 +16,7 @@ class Home extends Component {
     this.state = {
       route: this.props.location.pathname,
     }
+    console.log(this.state.route)
 
   }
 
@@ -25,7 +26,7 @@ class Home extends Component {
   }
 
   RouteSwitch(param) {
-    if(param === 'Alerts' || param === 'OBS' || param ==='Equip' || param==='Designs' ){
+    if(param === '/Alerts' || param === '/OBS' || param ==='/Equip' || param==='/Designs' ){
         return( <div className="newwidth"> 
                 <TabNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
       
@@ -35,7 +36,7 @@ class Home extends Component {
     else
         return (<div><CardNav route={this.state.route} OnRouteChange={this.OnRouteChange}  />
 
-               <Redirect push to="Home"/>
+               <Redirect push to="/Home"/>
                 </div>
                 ); 
   }

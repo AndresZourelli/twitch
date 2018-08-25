@@ -25,7 +25,6 @@ class App extends Component {
         <Header></Header>
         <Route path ="/" component={Home}/>
         <Switch>
-          
           <Route   path="/Alerts" component={Alerts}/>
           <Route    path="/OBS" component={OBS}/>
           <Route   path="/Designs" component={Designs}/>
