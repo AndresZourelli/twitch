@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import './OBS.css';
 import Sidedrawer_OBS from "./Sidedrawer_OBS";
-const OBS = () => {
+import Backdrop from "./Backdrop";
+class OBS extends Component {
+	state = {
+		sideDrawerOpen: false,
+	};
+
+	drawerToggleClickHandler = () => {
+		this.setState((prevState) => {
+			return {sideDrawerOpen: !prevState.sideDrawerOpen};
+		});
+	};
+
+	backdropClickHandler = () => {
+		this.setState({sideDrawerOpen: false});
+	};
+
+	render(){
+		let sideDrawer;
+		let backdrop;
+		if (this.state.sideDrawerOpen){
+			sideDrawer = <Sidedrawer_OBS className="side"/>;
+			backdrop = <Backdrop/>;
+
+		}
 	return(
 		<div>
 		<Row className="stretch">
@@ -18,12 +41,13 @@ const OBS = () => {
 			<Col className = "col-info right" xs = "3" >
 			<Sidedrawer_OBS className="side"/>
 			</Col>
-			<Button color="primary btn-class">p</Button>{' '}
+			<Button color="primary btn-class" onClick={ this.drawerToggleClickHandler}>p</Button>{' '}
 		
 		</Row>
-		<Sidedrawer_OBS className="side"/>
+		{sideDrawer}
+		{backdrop}
 		</div>
 		);
 };
-
+}
 export default OBS;
