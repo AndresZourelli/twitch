@@ -9,6 +9,8 @@ import OBS from './Main/OBS/OBS';
 import Tips from './Main/Tips/Tips';
 import Streamer from './Main/Streamer/Streamer';
 import Home from './Home';
+import Sidedrawer_OBS from './Main/OBS/Sidedrawer_OBS';
+import "./Home.css"
 import {
   BrowserRouter as Router,
   Route,
@@ -35,6 +37,7 @@ class App extends Component {
           <Route   path="/Tips" component={Tips}/>
           <Route path ="/Home"/>
         </Switch>
+     
         <Footer></Footer>
       </div>
       

@@ -1,5 +1,5 @@
 .stretch{
-	position: relative;
+	
 }
 .obs_contain {
 	margin: 0, 0, 0, 0 !important;
@@ -39,16 +39,31 @@
 
 .btn-class {
 	position: absolute;
-	height: 22%;
+	height: 50px;
+	width: 50px;
 	bottom: 2%;
 	right: 5%;
 	border-radius: 100%;
 
 }
+.side {
+	padding: 4%;
+}
 
 @media (max-width: 768px) {
 	.col-info{
 		display: none;
+	}
+
+	.side{
+		width: 75%;
+		height: 100%;
+		position: fixed;
+		z-index: 100;
+		background: white;
+		top: 0;
+		left: 5;
+		box-shadow: 2px 0 5px rgba(0,0,0,0.3);
 	}
 	
 }

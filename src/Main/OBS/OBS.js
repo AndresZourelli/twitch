@@ -1,8 +1,10 @@
 import React from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import './OBS.css';
+import Sidedrawer_OBS from "./Sidedrawer_OBS";
 const OBS = () => {
 	return(
+		<div>
 		<Row className="stretch">
 			<Col className = "left" xs = "9" >
 				<h2 className="Title_OBS">Getting Started with OBS</h2>
@@ -14,10 +16,13 @@ const OBS = () => {
 				</div>
 			</Col>
 			<Col className = "col-info right" xs = "3" >
-			His
+			<Sidedrawer_OBS className="side"/>
 			</Col>
 			<Button color="primary btn-class">p</Button>{' '}
+		
 		</Row>
+		<Sidedrawer_OBS className="side"/>
+		</div>
 		);
 };
 
