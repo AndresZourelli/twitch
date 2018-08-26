@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import './OBS.css';
 const OBS = () => {
 	return(
@@ -10,11 +10,13 @@ const OBS = () => {
 				<div className = "OBS_Why">
 					<h4>Why use OBS?</h4>
 					<p></p>
+
 				</div>
 			</Col>
-			<Col className = "right" xs = "3" >
+			<Col className = "col-info right" xs = "3" >
 			His
 			</Col>
+			<Button color="primary btn-class">p</Button>{' '}
 		</Row>
 		);
 };

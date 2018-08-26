@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Tips = () => {
+const Tips = (props) => {
 	return(
 		<div>Tips</div>
 		);

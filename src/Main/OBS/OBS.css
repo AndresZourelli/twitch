@@ -1,3 +1,6 @@
+.stretch{
+	position: relative;
+}
 .obs_contain {
 	margin: 0, 0, 0, 0 !important;
 	padding: 0, 0, 0, 0 !important;
@@ -32,4 +35,27 @@
 
 .left {
 	padding-left: 4%;
+}
+
+.btn-class {
+	position: absolute;
+	height: 22%;
+	bottom: 2%;
+	right: 5%;
+	border-radius: 100%;
+
+}
+
+@media (max-width: 768px) {
+	.col-info{
+		display: none;
+	}
+	
+}
+
+@media (min-width: 769px) {
+	.btn-class{
+		display: none;
+	}
+	
 }
