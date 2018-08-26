@@ -25,7 +25,7 @@ const items = [
   {
     src:  `slide2`,
     title: "Featured Stream",
-    csstitle: "title1",
+    csstitle: "title2",
     subtitle:"A Person",
     description: "ajdfbngv akfdjvngkfjbv djhvhbkjf jfkdhfrbv fkdjfghkjr vfjudkfhvurn ujfbe fjer ejfnjfkgr. rjdfnhifngjf jfjvfjuv jndfjknvkjfnv.",
     alt:"blue controller",
@@ -34,7 +34,7 @@ const items = [
   {
     src: `slide3`,
     title: "The Streamer Society",
-    csstitle: "title1",
+    csstitle: "title3",
     subtitle:"A community of streamers collaborating and sharing viewers and advice",
     description: "Join The Streamer Society to become a Featured Streamer by filling out a Get a Feature Form under the Streamer Society page, get in contact with similar streamers on our collaborator chat space, and exchange Tips and Tricks.",
     alt:"blue controller",
@@ -90,7 +90,7 @@ class Header extends Component {
           key={item.src}
         >
         <Row>
-            <Col xs="9"  className = "zeroMargin">
+            <Col sm='9' className = "zeroMargin">
               <div className={item.src} alt={item.altText}>
               </div>
             </Col>
@@ -98,7 +98,7 @@ class Header extends Component {
             <h1 className={item.csstitle}>{item.title}</h1>
             <h2 className={item.csstitle}>{item.subtitle}</h2>
             </span>
-            <Col className="overlay_col" xs="3" >
+            <Col className="overlay_col overlay_hide" sm="3" >
             <span className="alignVertical">{item.description}</span>
             </Col>
         </Row>
