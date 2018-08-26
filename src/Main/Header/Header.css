@@ -17,14 +17,14 @@ h1 {
     font-weight: 900;
     padding: 0;
     margin: 0;
-    font-size: 6em;
+    font-size: 6vw;
 }
 
 h2 {
     font-weight: 900;
     padding: 0;
     margin: 0;
-    font-size: 2em;
+    font-size: 2vw;
 }
 
 .title1 {
@@ -34,11 +34,17 @@ h2 {
 }
 
 .title2 {
-
+    color: white;
 }
 
 .title3 {
+    color: black;
+}
 
+@media (max-width: 576px) {
+    .overlay_hide{
+        display: none !important;
+    }
 }
 
 .overlay_col {
@@ -50,18 +56,19 @@ h2 {
 }
 
 .alignVertical {
-    border: .3em groove #6441A4;
+    border: .3vw groove #6441A4;
     margin: 10%;
     padding: 5%;
     font-family: garineldono01regular;
-    font-size: 1.25em;
-    line-height: 1.2em;
+    font-size: 1.25vw;
+    line-height: 1.2vw;
     text-align: center;
     display:flex;
     align-items: center; /* Vertical center alignment */
     justify-content: center;
     font-weight: 700;
     opacity: .75;
+    background: #f6f4ff;
 }
 
 .padded {
@@ -75,9 +82,8 @@ h2 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0;
-    background-image: url("blue-controller.jpg");
-    -webkit-filter: hue-rotate(65deg);
-    filter: hue-rotate(65deg);
+    background-image: linear-gradient(right, #e4e0ff, transparent 90%),
+        url("purple-controller.png");
 }
 .slide2 {
     width: 100%;
@@ -86,9 +92,8 @@ h2 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 0;
-    background-image: url("keyboard.jpg");
-    -webkit-filter: hue-rotate(180deg);
-    filter: hue-rotate(180deg);
+    background-image: linear-gradient(right, #e4e0ff, transparent 90%),
+        url("keyboard.jpg");
 }
 .slide3 {
     width: 100%;
