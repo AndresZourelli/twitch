@@ -1,0 +1,22 @@
+.Nav_bar_color a{
+	color: rgba(0,0,0,1) !important;
+	background-color: white;
+	width: 20px;
+
+}
+.navbar-collapse {
+	z-index: 100;
+	background-color: white;
+	border-radius: 0 10px 10px 10px;
+	padding: 7px;
+
+}
+.Nav_bar_color {
+	z-index: 100;
+	
+
+}
+
+.navbar {
+	width: 50%
+}

@@ -2,12 +2,12 @@ import React from 'react';
 import './TabNav.css'
 import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
-
+import NavButton from "../NavButton/NavButton"
 
 const TabNav = ({route, OnRouteChange}) => {
 
   return(
-  	<div>
+  	<div className = "Navigation_Tab_Container">
     <Nav tabs className = 'TabContainer'>
     		<NavItem>
               <NavLink  className = 'NavTabs ' onClick={() => { OnRouteChange('/Home') }}>Back</NavLink>
@@ -45,6 +45,9 @@ const TabNav = ({route, OnRouteChange}) => {
               <TabPane tabId="Tips">
               </TabPane>
           </TabContent>
+          <div className="Nav_Button_state">
+          <NavButton/>
+          </div>
         </div>
     );
 };

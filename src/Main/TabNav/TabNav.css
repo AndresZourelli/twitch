@@ -33,3 +33,30 @@
 	align-content: stretch;
 	padding: 0 0 0 0 !important;
 }
+
+
+@media (min-width: 769px) {
+	.btn-class{
+		display: none;
+	}
+	.backdrop{
+		display: none;
+	}
+	.Nav_Button_state{
+		display: none;
+	}
+
+	
+}
+
+
+@media (max-width: 768px) {
+	.TabContainer{
+		display: none !important;
+	}
+
+	.Navigation_Tab_Container{
+	background-color: #6441A4;
+	height: 7vh;
+}
+}

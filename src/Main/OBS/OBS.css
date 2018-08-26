@@ -56,6 +56,7 @@
 		display: none;
 	}
 
+
 	.side{
 		width: 75%;
 		height: 100%;
@@ -73,5 +74,9 @@
 	.btn-class{
 		display: none;
 	}
+	.backdrop{
+		display: none;
+	}
+
 	
 }

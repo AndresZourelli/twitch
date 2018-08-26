@@ -3,6 +3,7 @@ import './App.css';
 
 import CardNav from './Main/CardNav/CardNav';
 import TabNav from './Main/TabNav/TabNav';
+import NavButton from './Main/NavButton/NavButton';
 
 import {
   Redirect
@@ -31,10 +32,8 @@ class Home extends Component {
   RouteSwitch(param) {
     if(param === '/Alerts' || param === '/OBS' || param ==='/Equip' || param==='/Designs' || param==='/Tips' || param==='/Streamer' ){
         return( <div className="newwidth"> 
-                <TabNav route={this.state.route} OnRouteChange={this.OnRouteChange} />
-                                    {console.log("taab",i++)}
-                                    {console.log("route",this.state.route)}
-                                    <Redirect push to={this.state.route}/>
+                <TabNav className ="TabNav_State" route={this.state.route} OnRouteChange={this.OnRouteChange} />
+                <Redirect push to={this.state.route}/>
                 </div>
               );}
     else
