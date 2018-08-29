@@ -1,0 +1,56 @@
+.cont {
+	min-width: 100%;
+	padding: 10px !important;
+}
+.zeroMargins {
+	padding: 10px ;
+	width: 100%;
+	background-color: #1d1d1e;
+}
+
+.CardStyles:hover {
+	 transform: scale(1.05);
+}
+
+.center {
+	align-items: center;
+	align-content: center;
+	float: center;
+	padding-right: 0;
+	padding-left: 0;
+	width: 100% !important;
+	min-width: 100%;
+}
+
+.block-with-text {
+  overflow: hidden;
+  position: relative; 
+  line-height: 1.2em;
+  height: 3.6em;  
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+.CardStyles {
+	cursor: pointer;
+	align-items: center;
+	width: 100% !important;
+	min-height: 100% !important;
+	transition: .25s ease;
+}
+
+.dimensionSet {
+	min-height: 100%;
+	width: 100%;
+	border-width: 0 !important;
+	border-radius: 0 !important;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	/*margin-right: 0 !important;
+	margin-left: 0 !important;*/
+}
+
+.borderSquare {
+	height: 35vh;
+	border-radius: 0;
+}

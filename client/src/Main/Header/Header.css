@@ -1,0 +1,52 @@
+.dimension {
+	position: relative;
+	height: 45vh;
+	margin: 0;
+	padding: 0;
+}
+
+.onTopLeft {
+	padding: 2%;
+	margin:0;
+	font-family: 'Boogaloo', cursive;
+	font-size: 2.5vw;
+	color: white;
+  text-align: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 2.75vw;
+  background-color: black;
+}
+
+.formatMiddle {
+	margin:0;
+	padding:0;
+}
+
+.onTopRight {
+	padding: 2%;
+	margin:0;
+	font-family: 'Boogaloo', cursive;
+	font-size: 2.5vw;
+	color: white;
+  text-align: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 2.75vw;
+  background-color: #323133;
+}
+
+h2 {
+	padding: 0;
+	margin: 0;
+}
+
+h3 {
+	padding: 0;
+	margin: 0;
+}
+
+.logo {
+	height: auto;
+	width: 15vh;
+}
