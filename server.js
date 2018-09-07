@@ -1,5 +1,5 @@
 const express = require('express');
-const jwt = require('express-jwt');
+
 const jwksRsa = require('jwks-rsa');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const bcrypt = require("bcrypt");
 const { Client } = require("pg");
+const jwt = require('jsonwebtoken');
 require('dotenv').load();
 const checkAuth = require('./server/check-auth');
 const knex = require('knex');
@@ -21,66 +22,8 @@ const db = knex({
   database: process.env.DB,
   password: process.env.DB_password,
   port: process.env.DB_Port,
-  ssl: true,
-debug: true},
+  ssl: true},
 });
-
-// new_data.connect()
-
-// const database = {
-//   users: [{
-//     _id: '123',
-//     name: 'Bob',
-//     email: 'bob@gmail.com',
-//     joined: new Date()
-//   }],
-//   secrets: {
-//     users_id: '123',
-//     hash: 'wha'
-//   }
-// }
-
-//Talk to .env file testing area
-// console.log('No value for FOO yet:', process.env.JWT_KEY);
-
-// if (process.env.NODE_ENV !== 'production') {
-//   require('dotenv').load();
-// }
-
-// console.log('Now the value for FOO is:', process.env.JWT_KEY);
-
-
-
-/*
-const { Pool, Client } = require('pg')
-
-const pool = new Pool({
-  user: 'sydtaylo',
-  host: 'localhost',
-  database: 'twitchdb',
-  password: 'Lillian214',
-  port: 5432,
-})
-
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
-
-const client = new Client({
-  user: 'sydtaylo',
-  host: 'localhost',
-  database: 'twitchdb',
-  password: 'Lillian214',
-  port: 5432,
-})
-client.connect()
-
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  client.end()
-})
-*/
 
 // enhance your app security with Helmet
 app.use(helmet());
@@ -96,7 +39,7 @@ app.use(morgan('combined'));
 
 
 
-app.get('/api/hello', (req, res) => {
+app.post('/api/hello', checkAuth,(req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
@@ -133,10 +76,25 @@ app.post('/login', (req, res, next) => {
   .then(data => {
    const isValid = bcrypt.compareSync(req.body.password, data[0].password );
    if (isValid){
+      const token = jwt.sign(
+      {
+        email: data[0].email,
+        userId: data[0]['id'],
+      },
+      process.env.JWT_KEY, 
+      {
+        expiresIn: '1h'
+      }
+    );
+    
     return db.select('*').from('users')
     .where('email','=', req.body.email)
     .then(user => {
-      res.json(user[0])
+      
+      res.status(200).json({
+        message: "Auth successful", 
+        token: token
+      });
     })
     .catch(err => res.status(400).json('Unable to get User'))
    } else{
@@ -147,39 +105,4 @@ app.post('/login', (req, res, next) => {
   })
   .catch(err => res.status(400).json('Wrong credentials'))
 })  
-
-
-
-
-//   User.find({ email: req.body.email })
-//   .exec()
-//   .then(user =>{
-//     if (user.length < 1){
-//       return res.status(401).json({
-//         message: 'Auth Failed'
-//       });
-//     }
-//     bcrypt.compare(req.body.password, user[0].password, (err, result) =>{
-//       if (err) {
-//         return res.status(401).json({
-//           message: 'Auth Failed'
-//         });
-//       }
-//       if (result) {
-//         return res.status(200).json({
-//           message: 'Auth successful'
-//         });
-//       }
-//       res.status(401).json({
-//         message: 'Auth Failed'
-//       });
-//     });
-//   })
-//   .catch(err => {
-//     console.log(err);
-//     res.status(500).json({
-//       message: err
-//     });
-//   })
-// });
 
