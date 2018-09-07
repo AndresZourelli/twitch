@@ -103,66 +103,83 @@ app.get('/api/hello', (req, res) => {
 app.listen(port, () => console.log(`Listening on port hi ${port}`));
 
 app.post("/signup", (req, res) => {
-    if (2 === req.body.email) {
-    return res.status(409).json({
-      message: 'User Exists'
-    });
-  } else {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
       if (err) {
         return res.status(500).json({
           error: err
         });
       } else {
-        db('users').insert(
+        db('users').returning('*')
+        .insert(
         { name: req.body.names, 
          email: req.body.email, 
          password: hash ,
          joined: new Date()
-       }
-        ).then(console.log)
-        return res.status(200).json({
-          message: 'new user'
-        });
+        }
+        )
+        .then( user => {res.status(200).json({message: 'new user'});})
+        .catch(err => res.status(400).json("Unable to sign-up"))
       }
     })
-  }
-});
+  });
 
 
 
 
 
 app.post('/login', (req, res, next) => {
-  User.find({ email: req.body.email })
-  .exec()
-  .then(user =>{
-    if (user.length < 1){
-      return res.status(401).json({
-        message: 'Auth Failed'
-      });
-    }
-    bcrypt.compare(req.body.password, user[0].password, (err, result) =>{
-      if (err) {
-        return res.status(401).json({
-          message: 'Auth Failed'
-        });
-      }
-      if (result) {
-        return res.status(200).json({
-          message: 'Auth successful'
-        });
-      }
-      res.status(401).json({
-        message: 'Auth Failed'
-      });
-    });
+  db.select('email', 'password').from('users')
+  .where('email','=',req.body.email)
+  .then(data => {
+   const isValid = bcrypt.compareSync(req.body.password, data[0].password );
+   if (isValid){
+    return db.select('*').from('users')
+    .where('email','=', req.body.email)
+    .then(user => {
+      res.json(user[0])
+    })
+    .catch(err => res.status(400).json('Unable to get User'))
+   } else{
+    res.status.json('Wrong Credentials')
+   }
+    
+
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      message: err
-    });
-  })
-});
+  .catch(err => res.status(400).json('Wrong credentials'))
+})  
+
+
+
+
+//   User.find({ email: req.body.email })
+//   .exec()
+//   .then(user =>{
+//     if (user.length < 1){
+//       return res.status(401).json({
+//         message: 'Auth Failed'
+//       });
+//     }
+//     bcrypt.compare(req.body.password, user[0].password, (err, result) =>{
+//       if (err) {
+//         return res.status(401).json({
+//           message: 'Auth Failed'
+//         });
+//       }
+//       if (result) {
+//         return res.status(200).json({
+//           message: 'Auth successful'
+//         });
+//       }
+//       res.status(401).json({
+//         message: 'Auth Failed'
+//       });
+//     });
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).json({
+//       message: err
+//     });
+//   })
+// });
 
