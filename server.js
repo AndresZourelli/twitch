@@ -6,24 +6,39 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const bcrypt = require("bcrypt");
+const { Client } = require("pg");
 require('dotenv').load();
 const checkAuth = require('./server/check-auth');
-
+const knex = require('knex');
 const app = express();
 const port = process.env.PORT || 5000;
 
-const database = {
-  users: [{
-    _id: '123',
-    name: 'Bob',
-    email: 'bob@gmail.com',
-    joined: new Date()
-  }],
-  secrets: {
-    users_id: '123',
-    hash: 'wha'
-  }
-}
+const db = knex({
+  client: 'pg',
+  connection: {
+  user: process.env.DB_User,
+  host: process.env.DB_host,
+  database: process.env.DB,
+  password: process.env.DB_password,
+  port: process.env.DB_Port,
+  ssl: true,
+debug: true},
+});
+
+// new_data.connect()
+
+// const database = {
+//   users: [{
+//     _id: '123',
+//     name: 'Bob',
+//     email: 'bob@gmail.com',
+//     joined: new Date()
+//   }],
+//   secrets: {
+//     users_id: '123',
+//     hash: 'wha'
+//   }
+// }
 
 //Talk to .env file testing area
 // console.log('No value for FOO yet:', process.env.JWT_KEY);
@@ -88,7 +103,7 @@ app.get('/api/hello', (req, res) => {
 app.listen(port, () => console.log(`Listening on port hi ${port}`));
 
 app.post("/signup", (req, res) => {
-    if (database.users[0].email === req.body.email) {
+    if (2 === req.body.email) {
     return res.status(409).json({
       message: 'User Exists'
     });
@@ -99,13 +114,15 @@ app.post("/signup", (req, res) => {
           error: err
         });
       } else {
-        const user =({
-          _id: "1",
-          email: req.body.email,
-          password: hash
-        });
+        db('users').insert(
+        { name: req.body.names, 
+         email: req.body.email, 
+         password: hash ,
+         joined: new Date()
+       }
+        ).then(console.log)
         return res.status(200).json({
-          message: user
+          message: 'new user'
         });
       }
     })
