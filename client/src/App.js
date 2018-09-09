@@ -10,6 +10,7 @@ import Tips from './Main/Tips/Tips';
 import Streamer from './Main/Streamer/Streamer';
 import Home from './Home';
 import Sidedrawer_OBS from './Main/OBS/Sidedrawer_OBS';
+import Register from './Main/Register_Form/Register_form';
 import "./Home.css"
 import {
   BrowserRouter as Router,
@@ -54,6 +55,7 @@ class App extends Component {
           <Route   path="/Equip" component={Equip}/>
           <Route   path="/Streamer" component={Streamer}/>
           <Route   path="/Tips" component={Tips}/>
+          <Route   path="/register" component={Register} />
           <Route path ="/Home"/>
         </Switch>
      

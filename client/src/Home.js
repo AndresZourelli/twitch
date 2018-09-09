@@ -16,6 +16,7 @@ class Home extends Component {
     super(props);
     this.state = {
       route: this.props.location.pathname,
+      isLoggedIn: false,
     }
     console.log(this.state.route)
 
@@ -37,11 +38,16 @@ class Home extends Component {
                 </div>
               );}
     else
+        if(param ==='/register'){
+          return
+        }
+        else{
         return (<div><CardNav route={this.state.route} OnRouteChange={this.OnRouteChange}  />
 
                   <Redirect push to="/Home"/>
                 </div>
-                ); 
+                );
+                } 
   }
   render() {
     return (
