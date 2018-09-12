@@ -18,6 +18,10 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const KnexSessionStore = require('connect-session-knex')(session);
 const LocalStrategy = require('passport-local').Strategy;
+const mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
+const crypto = require('crypto');
+
+
 
 const db = knex({
   client: 'pg',
@@ -128,37 +132,60 @@ app.post("/signup",[
   }
   
   else{
-
+    emailtokens = crypto.randomBytes(20).toString('hex');
     bcrypt.hash(req.body.password, 10, (err, hash) => {
       if (err) {
         return res.status(500).json({
           error: err
         });
       } else {
-        db('users').returning('id')
+        db('users')
         .insert(
         { username: req.body.username, 
          email: req.body.email, 
          password: hash ,
-         joined: new Date()
-        }
-        )
-        .then( user =>{
-          const userId = user;
-          req.login(user, (err)=>{
-            if(err){
-              res.json({message: 'failed'});
-            }
-          }); 
-          {res.status(200).json({message: "New User"})};
-      })
-        .catch(err => res.status(400).json("Unable to sign-up"))
+         joined: new Date(),
+         passwordresettoken: null,
+         resetpasswordexpires: null,
+         verifieduser: 0,
+         updatedat: new Date(),
+         emailtoken: emailtokens
+        })
+        .then((response)=>{
+         
+          const data = {
+
+            from: 'Streamer Society Email Verification <verifyEmail@samples.mailgun.org>',
+            to: req.body.email,
+            subject: 'Please Veryify Email',
+            text: 'Hello,\n\n' +
+          'Please confirm your account for ' + req.body.email + ' by clicking on this link '+ 
+          'http://' + 'localhost:3000' + '/verify/' + emailtokens + '\n\n'};
+      
+            return mailgun.messages().send(data)
+           }) 
+        .catch(err => {console.log(err); res.status(400).json("Unable to sign-up")})
       }
     })
   }
   });
 
-
+app.get('/verify/:emailtoken', (req, res)=>{
+  console.log(req.params.emailtoken);
+  db.select('emailtoken').from('users')
+  .where('emailtoken','=',req.params.emailtoken)
+  .then((ress)=>{
+    console.log(ress[0].emailtoken);
+    if(ress.length < 1){
+      return res.redirect('/signup');
+    }
+    else{
+      return db.select('emailtoken').from('users')
+      .where('emailtoken','=',ress[0].emailtoken).update({verifieduser: 1, emailtoken: null, updatedat: new Date()}).then(response=>{
+      res.redirect('/login');})
+    }
+  }).catch(err => {console.log(err); res.status(400).json('Password reset token is invalid or has expired.')});
+});
 
 
 
@@ -221,6 +248,89 @@ app.get('/logout', (req, res) => {
     });
     
   });
+
+app.post('/reset', (req, res) => {
+  
+  token = crypto.randomBytes(20).toString('hex');
+
+  db.select('email').from('users')
+  .where('email','=',req.body.email)
+  .update({
+    passwordresettoken: token,
+    resetpasswordexpires: Date.now()+3600000,
+    updatedat: new Date()
+  })
+  .then((res) =>{
+      const data = {
+      from: 'Excited User <me@samples.mailgun.org>',
+      to: req.body.email,
+      subject: 'Streamer Society Password Reset Instructions',
+      text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+          'http://' + 'localhost:3000' + '/reset/' + token + '\n\n' +
+          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+      };
+      
+     
+       
+      return mailgun.messages().send(data)
+  }).catch(err => {console.log(err); res.status(400).json('Unable to get User')});
+
+  
+});
+
+app.get('/reset/:token', (req, res)=>{
+  db.select('passwordresettoken').from('users')
+  .where('passwordresettoken','=',req.params.token)
+  .then((res)=>{
+    if(res.length < 1){
+      return res.redirect('/reset');
+    }
+    else{
+      res.redirect('/reset/:'+req.params.token);
+    }
+  }).catch(err => {console.log(err); res.status(400).json('Password reset token is invalid or has expired.')});
+});
+
+app.post('/reset/:token',[
+  check('password').isLength({min: 8, max: 100}).withMessage('Password must be between 8-100 characters long.'),
+  check('password').exists().matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,}$/, "i").withMessage('Password must include one lowercase character, one uppercase character, a number, and a special character.'),
+  check('passwordMatch').exists().isLength({min: 8, max: 100}).withMessage('Password must be between 8-100 characters long.'),
+  check('password').custom((value, {req})=> value === req.body.passwordMatch).withMessage('Passwords do not match, please try again.')], 
+  (req, res)=>{
+
+    token = req.params.token;
+
+  db.select('passwordresettoken','email').from('users')
+    .where('passwordresettoken','=',req.params.token)
+    .then((info)=>{
+      const v = info[0].email;
+      if(info.length < 1){
+       res.status(401).json({message: "couldn't find user"});
+      }
+      else{
+        hash = bcrypt.hashSync(req.body.password, 10);
+        return db.select('passwordresettoken','email','resetpasswordexpires').from('users')
+        .where('passwordresettoken','=',req.params.token).update({password: hash, passwordresettoken: null, resetpasswordexpires: null, updatedat: new Date()})
+        .then(users =>{
+          console.log(v);
+          const data = {
+
+            from: 'Reset User Password <resetpassword@samples.mailgun.org>',
+            to: v,
+            subject: 'Your password has been changed',
+            text: 'Hello,\n\n' +
+          'This is a confirmation that the password for your account ' + v + ' has just been changed.\n' };
+      
+            return mailgun.messages().send(data)
+           }) ;
+      }
+    })
+    .catch(err => {console.log(err); res.status(400).json('Password reset token is invalid or has expired.')});
+  });
+//});
+  //});
+
 
 function authenticationMiddleware () {  
   return (req, res, next) => {
