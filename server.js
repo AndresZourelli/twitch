@@ -70,18 +70,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy(
-  function(username, password, done) {
-      db('users').where({
-        username: username
-       }).select('password','id')
+  function(email, password, done) {
+      db.select('id','password').from('users')
+      .where('email','=',req.body.email)
       .then((err, results, fields) => {
        if(err){
-        done(err)
+        return done(err)
        };
        console.log(results[0].password.toString());
-      hash = results[0].password.toString();
+       hash = results[0].password.toString();
        if(results.length === 0){
-        done(null, false);
+        return done(null, false,{message: 'RIP'});
        } 
        else{
 
@@ -90,23 +89,22 @@ passport.use(new LocalStrategy(
               return done(null, {user_id: results[0].id });
             }
             else{
-              return done(null, false);
+              return done(null, false,{message: 'RIP2'});
             }
           });
 
         }
 
 
-      })
+      }).catch(err=>{message: err})
       
     }
   
 ));
 
 
-app.post('/api/hello',(req, res) => {
-  console.log(req.user);
-  console.log(req.isAuthenticated());
+app.post('/api/hello', verifyToken,(req, res) => {
+  console.log(req);
   res.send({ express: 'Hello From Express' });
 });
 
@@ -171,20 +169,19 @@ app.post("/signup",[
   });
 
 app.get('/verify/:emailtoken', (req, res)=>{
-  console.log(req.params.emailtoken);
   db.select('emailtoken').from('users')
   .where('emailtoken','=',req.params.emailtoken)
-  .then((ress)=>{
-    console.log(ress[0].emailtoken);
+  .then((ress,err)=>{
+    console.log(err)
     if(ress.length < 1){
-      return res.redirect('/signup');
+      res.status(200).json('failure');
     }
     else{
       return db.select('emailtoken').from('users')
       .where('emailtoken','=',ress[0].emailtoken).update({verifieduser: 1, emailtoken: null, updatedat: new Date()}).then(response=>{
-      res.redirect('/login');})
+      res.send('Success');})
     }
-  }).catch(err => {console.log(err); res.status(400).json('Password reset token is invalid or has expired.')});
+  }).catch(err => {console.log(err); res.status(400).send('Password reset token is invalid or has expired.')});
 });
 
 
@@ -205,14 +202,28 @@ app.post('/login', (req, res, next) => {
         expiresIn: '1h'
       }
     );
+
+      const RefreshToken = jwt.sign(
+      {
+        email: data[0].email,
+        userId: data[0]['id'],
+      },
+      process.env.JWT_KEY, 
+      {
+        expiresIn: '1h'
+      }
+    );
+
+     
     
     return db.select('*').from('users')
-    .where('email','=', req.body.email)
+    .where('email','=', req.body.email).update({sessiontoken: token, refreshsessiontoken: RefreshToken, sessionexpires: Date.now()+3600000})
     .then(user => {
       
       res.status(200).json({
         message: "Auth successful", 
-        token: token
+        token: token,
+        RefreshToken: RefreshToken
       });
     })
     .catch(err => res.status(400).json('Unable to get User'))
@@ -328,8 +339,25 @@ app.post('/reset/:token',[
     })
     .catch(err => {console.log(err); res.status(400).json('Password reset token is invalid or has expired.')});
   });
-//});
-  //});
+
+
+//verify token
+
+function verifyToken(req, res, next){
+  const bearerHeader = req.headers['authorization'];
+
+  if(typeof bearerHeader !== 'undefined'){
+    const bearer = bearerHeader.split(' ');
+    const bearerToken = bearer[1];
+
+    req.token = bearerToken;
+    next();
+
+  } else{
+    //Forbidden
+    res.sendStatus(403);
+  }
+}
 
 
 function authenticationMiddleware () {  
