@@ -52,6 +52,10 @@
 
 }
 
+.Indents {
+	text-indent: 5%
+}
+
 @media (max-width: 768px) {
 	.col-info{
 		display: none;

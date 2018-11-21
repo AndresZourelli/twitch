@@ -32,7 +32,7 @@ class OBS extends Component {
 			<Col className = "left" xs = "9" >
 				<h2 className="Title_OBS">Getting Started with OBS</h2>
 				<p>You can get OBS <a href="https://obsproject.com/" target="_blank">here.</a></p>
-				<div className = "OBS_Why">
+				<div className = "OBS_Why" id="OBS_Why">
 					<h4><strong>Quick Start to Streaming!</strong></h4>
 					<br/>
 					<p>OBS, aka Open Broadcaster Software, is a free and open source software for video recording and live streaming.
@@ -126,15 +126,15 @@ class OBS extends Component {
 					 <p>If you want to know more about OBS and what other settings you can use just keep on reading.</p>
 					 
 					 <br/>
-					 <h3><strong>Advanced Settings</strong></h3>
+					 <h3 id="OBS_Advanced_Settings"><strong>Advanced Settings</strong></h3>
 					
 					<br/>
 					<p>We are going to start with the "Settings" option for OBS and talk about what each option does and what it offers.</p>
-					<h4><strong>Settings</strong></h4>
+					<h4 id="Settings_Advanced"><strong>Settings</strong></h4>
 					<br/>
-					<h5><strong>Output</strong></h5>
+					<h5 id= "Output_Advanced"><strong>Output</strong></h5>
 					<br/>
-					<h6><strong>Streaming</strong></h6>
+					<h6 id="Streaming_Advanced"><strong>Streaming</strong></h6>
 					<br/>
 					<p>Lets open the settings tab again and mosey on over to the Output option. Here we can customize quite a few things. First we want to be able to control a bit more settings so change the output mode at the top of this section to Advanced.
 					 Now we can see what customization OBS has to offer to us.
@@ -206,7 +206,7 @@ class OBS extends Component {
 					  Then just set Tune to none, its just another setting for the x264 encoder if you want to know more about it here is a link to see what it does <a href="https://superuser.com/questions/564402/explanation-of-x264-tune">https://superuser.com/questions/564402/explanation-of-x264-tune</a>.
 					  </p>
 					  <br/>
-					  <h6><strong>Recording</strong></h6>
+					  <h6 id="Recording_Advanced"><strong>Recording</strong></h6>
 					  <br/>
 					  <p>For those that want to record their streams for uploading to services like youtube or just so they can have it they can setup this option in this tab.
 					  </p>
@@ -243,18 +243,18 @@ class OBS extends Component {
 					<p>If you are streaming and Recording be prepared to sacrifice some of your resolution because this cause a lot of strain on your encoder if your using the same for both. I am using the NVENC encoder for this as well.
 					</p>
 					<br/>
-					<h6><strong>Audio</strong></h6>
+					<h6 id ="Audio_Advanced"><strong>Audio</strong></h6>
 					<br/>
 					<p>This is the tab where you can name your audio tracks and set the quality. I usually have all audio set to max quality except for the one that I am using to stream. I use 160 for the streaming track to ensure a lean stream that doesn’t buffer or have issues.
 					</p>
 					<br/>
-					<h6><strong>Replay Buffer</strong></h6>
+					<h6 id = "Reply_Buffer_Advanced"><strong>Replay Buffer</strong></h6>
 					<br/>
 					<p>This feature allows you to record the last x amount of seconds of your stream. So if you made a sick head shot you can save that as a clip and it will store it on your hard drive. 
 					I don't use this I just record instead so I can capture every moment good and bad. 
 					</p>
 					<br/>
-					<h5><strong>Audio</strong></h5>
+					<h5 id="Audio_Tab"><strong>Audio</strong></h5>
 					<br/>
 					<p>Sample rate just lets you set what kind of quality you want your sound to be I have it set at 48khz.</p>
 					<br/>
@@ -275,25 +275,25 @@ class OBS extends Component {
 					I will go into how to bind the controls for them in a later section.
 					</p>
 					<br/>
-					<h6><strong>Video</strong></h6>
+					<h6 id="Video_Tab"><strong>Video</strong></h6>
 					<br/>
 					<p>This area sets up the video we see on OBS so you want to set Base Resolution and Output Resolution to the size of the monitor you are using. My monitor is 2560x1440 and I have that in both fields. 
 					I left the downscale filter as bicubic but I did change the FPS values to 60.
 					</p>
 					<br/>
-					<h6><strong>Hotkeys</strong></h6>
+					<h6 id="Hotkeys_Tab"><strong>Hotkeys</strong></h6>
 					<br/>
 					<p>As the name suggest this is where we can set out hotkeys or the keys we can press to control OBS. 
 					This controls a lot of things so go through it and bind your keys to however you want them.
 					</p>
 					<br/>
-					<h6><strong>Advanced</strong></h6>
+					<h6 id = "Advanced_Tab"><strong>Advanced</strong></h6>
 					<br/>
 					<p>You can add stream delay if you experience stream snipers or you have a competition that requires a delay. 
 					Also, you can enable auto reconnect incase your internet drops and you want OBS to connect on its own when it can.
 					</p>
 					<br/>
-					<h5><strong>Scenes</strong></h5>
+					<h5 id="Scenes_Section"><strong>Scenes</strong></h5>
 					<br/>
 					<p>Scenes are used to store all the sources you used during a particular part of you broadcast. 
 					Usually you have one for BRB, Stream Starting, waiting, IRL., and of course for your game.
@@ -301,7 +301,7 @@ class OBS extends Component {
 					<br/>
 					<p>To setup a scene all you need to do is click on the plus sign under scenes and give it a name that describes what you are doing in that scene.</p>
 					<br/>
-					<h5><strong>Sources</strong></h5>
+					<h5 id="Sources_Section"><strong>Sources</strong></h5>
 					<br/>
 					<p>Sources are what makes up your particular scene. 
 					So for a gaming stream we might need several different sources in order to achieve the effect we want. 
@@ -312,13 +312,13 @@ class OBS extends Component {
 					There are 14 different options you can choose from and I will go through each so you can choose what you need for your stream or recording. 
 					</p>
 					<br/>
-					<h6><strong>Audio Input Capture</strong></h6>
+					<h6 id= "Audio_Input_Capture"><strong>Audio Input Capture</strong></h6>
 					<br/>
 					<p>You can choose a specific audio devices and have OBS record it. 
 					This is usually used for devices that you haven’t already selected as the default inputs for OBS. This is where you would put your sound board, another mic, game console and much more. 
 					</p>
 					<br/>
-					<h6><strong>Browser</strong></h6>
+					<h6 id="Browser"><strong>Browser</strong></h6>
 					<br/>
 					<p>This option allows you to add a browser to you stream. 
 					Why would you want to do this? Well, it gives you numerous ways to add tons of custom effects. 
@@ -327,13 +327,13 @@ class OBS extends Component {
 					You can also control the width, height, FPS, CSS, shutdown source, refresh browser, refresh cache.
 					</p>
 					<br/>
-					<h6><strong>Color Source</strong></h6>
+					<h6 id="Color_Sources"><strong>Color Source</strong></h6>
 					<br/>
 					<p>This gives you the ability to add solid colors to your scene which you can then use for backgrounds or infoboxes. 
 					You can also use it to add a tint to your stream using the alpha channel.
 					</p>
 					<br/>
-					<h6><strong>Display Capture</strong></h6>
+					<h6 id="Display_Capture"><strong>Display Capture</strong></h6>
 					<br/>
 					<p>As this name implies, you can use this source to capture everything that appears on your display. 
 					This comes with two options, the first allows you to select which display you want to capture and the second lets you choose whether to show your cursor or not. 
@@ -341,7 +341,7 @@ class OBS extends Component {
 					If you want to add your display to multiple scenes be sure to add the existing source.
 					</p>
 					<br/>
-					<h6><strong>Game Capture</strong></h6>
+					<h6 id= "Game_Capture"><strong>Game Capture</strong></h6>
 					<br/>
 					<p>This is probably the main source you will use as it is intended to only capture your desired source like your open video game. 
 					This will only work if the game is DirectX or OpenGL. 
@@ -353,19 +353,19 @@ class OBS extends Component {
 					Lastly, you have the capture third-part overlays so if you have steam you can see the overlay when you use the ctrl+tab option or if you want your stream to see you discord overlay then you can enable this feature.
 					</p>
 					<br/>
-					<h6><strong>Image</strong></h6>
+					<h6 id="Image"><strong>Image</strong></h6>
 					<br/>
 					<p>Just lets you add an image to your stream and accepts these image formats: .bmp, .tga, .png, .jpeg, .jpg, and .gif. 
 					It also has the option to unload images when not in use so it helps free some system resources when you aren’t showing the image. 
 					</p>
 					<br/>
-					<h6><strong>Image Slide Show</strong></h6>
+					<h6 id="Image_Silde_Show"><strong>Image Slide Show</strong></h6>
 					<br/>
 					<p>Image slideshow accepts multiple images which you can combine into a slideshow. 
 					The options you can control are the way it transitions to a new image, time between slides (milliseconds), transition speed (milliseconds), and randomize playback.
 					</p>
 					<br/>
-					<h6><strong>Media Source</strong></h6>
+					<h6 id="Media_Source"><strong>Media Source</strong></h6>
 					<br/>
 					<p>This option gives you the power to add different types of media to your stream such as:
 					<ul>Video: .mp4, .ts, .mov, .flv, .mkv, .avi, .gif, .webm</ul>
@@ -377,13 +377,13 @@ class OBS extends Component {
 					There is an enable hardware decoding option if it's available. 
 					You can then hide a source once it is done playing by enabling the “Hide source when playback ends”.
 					</p>
-					<h6><strong>Scenes</strong></h6>
+					<h6 id="Scenes_sources"><strong>Scenes</strong></h6>
 					<br/>
 					<p>You can add scenes as sources! 
 					This is used for scenes that share a static overlay so if you make any changes to the source scene it applies to all other sources that were using that scene. 
 					</p>
 					<br/>
-					<h6><strong>Text (GDI+)</strong></h6>
+					<h6 id="Text_GDI"><strong>Text (GDI+)</strong></h6>
 					<br/>
 					<p>This source allows you to add text to your stream. 
 					You can also load text from a text file and will be reloaded each time it is saved so it will automatically update on stream. 
@@ -391,12 +391,12 @@ class OBS extends Component {
 					There are multiple ways to customize the text such as changing the foreground color, changing the background color, add a gradient, adjust the opacity, horizontal and vertical align, add an outline, add custom text extents for the size of the source and if the text should wrap if width is exceeded.
 					</p>
 					<br/>
-					<h6><strong>VLC Video Source</strong></h6>
+					<h6 id="VLC"><strong>VLC Video Source</strong></h6>
 					<br/>
 					<p>This is similar to media source but will use the VLC libraries for extended media support. You must have VLC INstalled and the application must use the same bit as your OBS, If OBS is 64-bit VLC must be 64-bit.
 					</p>
 					<br/>
-					<h6><strong>Video Caputre Device</strong></h6>
+					<h6 id="Video_Capture_Device"><strong>Video Caputre Device</strong></h6>
 					<br/>
 					<p>Use this option to capture the a variety of video devices. 
 					Such as web cameras and capture cards but not limited to just those. 
@@ -413,13 +413,13 @@ class OBS extends Component {
 					Lastly, you have the custom audio device which will separate the audio device linked to your camera.
 					</p>
 					<br/>
-					<h6><strong>Window Capture</strong></h6>
+					<h6 id="Window_Capture"><strong>Window Capture</strong></h6>
 					<br/>
 					<p>Window capture allows you to capture a specific window. 
 					This differs from display capture because it will only capture the desired window so if there is something in front of it no one else will see it. 
 					</p>
 					<br/>
-					<h5><strong>Mixer</strong></h5>
+					<h5 id="Mixer"><strong>Mixer</strong></h5>
 					<br/>
 					<p>The mixer allows you to see the current audio being applied to your stream/recording. 
 					To control what appears here you can open the settings and go to audio. 
@@ -431,7 +431,7 @@ class OBS extends Component {
 					You can Hide, rename, unhide all, add filters, access its properties, and some advanced audio preferences. 
 					</p>
 					<br/>
-					<h6><strong>Filters</strong></h6>
+					<h6 id="Filters"><strong>Filters</strong></h6>
 					<br/>
 					<p>You have 5 audio filters that you can apply to you audio source for sound management or effects.</p>
 					<br/>
@@ -446,11 +446,11 @@ class OBS extends Component {
 					 They are then used to apply certain effects to your audio.
 					 </ul>
 					 <br/>
-					 <h6><strong>Properties</strong></h6>
+					 <h6 id="Properties"><strong>Properties</strong></h6>
 					 <br/>
 					 <p>You can see what the audio devices properties are and the options that come with them.</p>
 					<br/>
-					<h6><strong>Advanced Audio Properties</strong></h6>
+					<h6 id="Advanced_Audio_Properties"><strong>Advanced Audio Properties</strong></h6>
 					<br/>
 					<ul>You can control the audio sources volume</ul>
 					<ul>Make it a mono source</ul>
@@ -458,11 +458,57 @@ class OBS extends Component {
 					<ul>Offset the audio</ul>
 					<ul>Change the audio monitoring so that only you can hear the audio source, you can hear it and it outputs to the stream, or it is disabled.</ul>
 					<br/>
-					<h5><strong>Transitions</strong></h5>
+					<h5 id="Transitions"><strong>Transitions</strong></h5>
+						<p>When changing scenes you can add a transition as an effect. When first selecting the dropdown menu you have a cut or fade option. You can add more transitions by pressing the "+" icon below the dropdown. 
+						Your options and customizations for each are now:
+						</p>
+						<ul>Cut</ul>
+						<ul>Fade
+							<div className="Indents">Has only one setting called duration. You can determine how long the effect lasts for in milliseconds.</div>
+						</ul>
+						<ul>Swipe
+							<div className="Indents">The Swipe has several conditions that you can control. You can determine the length of the effect in milliseconds.
+							Another property you can manipulate is the direction of the swipe. Lastly, you can also decide whether the effect occurs as a Swipe In or Swipe Out by simply clicking on a check box.</div>
+						</ul>
+						<ul>Slide
+							<div className="Indents">The slide option has two properties: Duration, where you can control the length of the effect in milliseconds, and Direction, where you can determine which direction the effect occurs in.</div>
+						</ul>
+						<ul>Stinger</ul>
+							<div className="Indents">The Stinger transition allows you to use a small clip or video to create a tansition.
+								
+								In the poperties section of this transition you can select which video file you want to use.
+								You can also determine where you want the transition to occur in the small video by uing milliseconds or by number of frames.
+								The audio can also be slightly controlled in this panel such as choosing if you want to hear the tranisiton between the two different sources.
+								There is also an option to control the Audio Fade Style. This allows you to either have a crossfade effect for your transition between the sources or you can select the fade out to transition point then fade in.
+							 </div>
+						<ul>Fade to Color
+
+							<div className="Indents">The Fade to color effect does exactly as it says. The transition fades to a color and then fades from the color to the next scene. 
+							The properties you can adjust for this is the color and the peak color point. This allows you set the location of where the peak color will occur. You can also set the duration of the effect in milliseconds.</div>
+						</ul>
+						<ul>Luma Wipe
+
+							<div className="Indents">
+								The Luma Wipe effect allows you to add cool effects such as blinds, bubbles, tiles, spiral, and much more. You can choose how soft the effect is and whether or not the effect is inverted.  
+							</div>
+						</ul>
+						
+						
 					<br/>
-					<h5><strong>Controls</strong></h5>
+					<h5 id="Controls"><strong>Controls</strong></h5>
+						<div className="Indents">
+							The Controls panel is used to start your stream and recording. You can also change the view of you OBS to Studio mode which brings up 2 screens. One for setting up a scene before anyone can see it and another that shows what is currently being recorded.
+							You can simply click on the center transisiton button to make the scene you have been setting up the new live image which everyone can see. Then you have the Settings button that allows you to access the OBS settings.
+							Lastly, the exit button is used to exit the application. 
+						
+						</div>
 					<br/>
-					<h5><strong>Profile</strong></h5>
+					<h5 id="Profile"><strong>Profile</strong></h5>
+						<div className="Indents">
+							The profile option in the tool bar at the top of OBS allows you to create profiles. Profiles are used to store different settings like if you have 2 Twitch channels you would have 2 profiles. 
+							Each profile saves the OBS settings but does not include the scenes or sources. 
+						
+						</div>
 					<br/>
 
 				</div>

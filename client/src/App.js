@@ -14,6 +14,7 @@ import Register from './Main/Register_Form/Register_form';
 import Reset from './Main/Reset/Reset';
 import PassReset from './Main/PasswordReset/PassReset';
 import Verify from './Main/Verify/Verify';
+import ErrorNotFound from './Main/ErrorNotFound/ErrorNotFound';
 import "./Home.css"
 import {
   BrowserRouter as Router,
@@ -62,6 +63,7 @@ class App extends Component {
           <Route   path="/reset/:token" component={PassReset} />
           <Route   path="/verify/:emailtoken" component={Verify} />
           <Route   path ="/Home"/>
+          <Route path="*" component={ErrorNotFound}/>
         </Switch>
      
         <Footer></Footer>
