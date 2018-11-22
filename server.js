@@ -8,15 +8,23 @@ const morgan = require('morgan');
 const bcrypt = require("bcrypt");
 require('dotenv').load();
 const checkAuth = require('./server/check-auth');
-
+const knex = require('knex');
 const app = express();
 const port = process.env.PORT || 5000;
+
+
+var pg = require('knex')({
+  client: 'pg',
+  connection: process.env.PG_CONNECTION_STRING,
+  searchPath: ['knex', 'public'],
+});
 
 const database = {
   users: [{
     _id: '123',
     name: 'Bob',
     email: 'bob@gmail.com',
+    password: 'test3',
     joined: new Date()
   }],
   secrets: {
@@ -99,13 +107,13 @@ app.post("/signup", (req, res) => {
           error: err
         });
       } else {
-        const user =({
+        database.users.push({
           _id: "1",
           email: req.body.email,
           password: hash
         });
         return res.status(200).json({
-          message: user
+          message: database
         });
       }
     })
@@ -117,18 +125,23 @@ app.post("/signup", (req, res) => {
 
 
 app.post('/login', (req, res, next) => {
-  User.find({ email: req.body.email })
-  .exec()
-  .then(user =>{
+  var i;
+  var c = [];
+  for ( i = 0; i < database.users.length; i++){
+    c[i] = database.users[i];
+  }
+  user = c;
+  //console.log(user);
+  console.log(req.body.password);
     if (user.length < 1){
       return res.status(401).json({
-        message: 'Auth Failed'
+        message: 'Auth Failed 0'
       });
     }
-    bcrypt.compare(req.body.password, user[0].password, (err, result) =>{
+    bcrypt.compare(req.body.password,user[1].password, (err, result) =>{
       if (err) {
         return res.status(401).json({
-          message: 'Auth Failed'
+          message: 'Auth Failed 1'
         });
       }
       if (result) {
@@ -136,16 +149,11 @@ app.post('/login', (req, res, next) => {
           message: 'Auth successful'
         });
       }
+      console.log(result)
       res.status(401).json({
         message: 'Auth Failed'
       });
     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      message: err
-    });
-  })
+  
 });
 
