@@ -30,7 +30,7 @@
 	border-left: 2px solid #6441A4;
 	background: white;
 	display: flex;
-	height: 100vh;
+	
 }
 
 .left {
@@ -49,6 +49,11 @@
 }
 .side {
 	padding: 4%;
+
+}
+
+.Indents {
+	text-indent: 5%
 }
 
 @media (max-width: 768px) {

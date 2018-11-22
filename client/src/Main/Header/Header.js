@@ -1,7 +1,8 @@
 import React from 'react';
 import {Row, Col} from "reactstrap";
 import "./Header.css";
-
+import Login from "../Login/Login";
+import Sign_up from "../Sign_Up/Sign_up";
 const Header = () => {
 	return(
 		<Row className="dimension">
@@ -26,12 +27,16 @@ const Header = () => {
 		</iframe>
 		</Col>
 		<Col xs='3' className="onTopRight">
-		<h2>
-		Wanna be Featured?
-		</h2>
-		<h3>   
-		Go submit a Get Featured form on the Streamer Society Page and consider joining our community!
-		</h3>
+			<div>
+				<Login/>
+				<Sign_up/>
+			</div>
+			<h2>
+			Wanna be Featured?
+			</h2>
+			<h3>   
+			Go submit a Get Featured form on the Streamer Society Page and consider joining our community!
+			</h3>
 		</Col>
 		</Row>
 	);

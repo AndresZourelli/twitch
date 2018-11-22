@@ -16,8 +16,8 @@ class Home extends Component {
     super(props);
     this.state = {
       route: this.props.location.pathname,
+      isLoggedIn: false,
     }
-    console.log(this.state.route)
 
   }
 
@@ -26,7 +26,6 @@ class Home extends Component {
 
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
   this.setState({route: nextProps.location.pathname});
   }
   RouteSwitch(param) {
@@ -36,12 +35,14 @@ class Home extends Component {
                 <Redirect push to={this.state.route}/>
                 </div>
               );}
-    else
+    
+    if(param ==='/Home' || param ==='/'){
         return (<div><CardNav route={this.state.route} OnRouteChange={this.OnRouteChange}  />
 
                   <Redirect push to="/Home"/>
                 </div>
-                ); 
+                );
+                } 
   }
   render() {
     return (
