@@ -1,3 +1,7 @@
+.new {
+	margin: 10px;
+}
+
 .cont {
 	min-width: 100%;
 	padding: 10px !important;
@@ -6,10 +10,12 @@
 	padding: 10px ;
 	width: 100%;
 	background-color: #1d1d1e;
+	
 }
 
 .CardStyles:hover {
 	 transform: scale(1.05);
+	 z-index: 99999;
 }
 
 .center {
